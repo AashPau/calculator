@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Hero.css";
+
+const operator = ["+", "-", "/", "*", "%"];
 export const Hero = () => {
   //   const [value, setValue] = useState("");
   const [display, setDisplay] = useState("");
@@ -10,11 +12,25 @@ export const Hero = () => {
   };
   console.log(display);
 
-  const handleOperatorClick = (operator) => {
-    if (display.includes(".") && operator === ".") {
+  const handleOperatorClick = (op) => {
+    if (
+      display.includes(op) &&
+      display.lastIndexOf(op) === display.length - 1
+    ) {
       return display;
     } else {
-      setDisplay(display + operator);
+      setDisplay(display + op);
+    }
+  };
+
+  const handleDotclick = () => {
+    if (
+      display.includes(".") &&
+      display.lastIndexOf(".") >= display.lastIndexOf(operator)
+    ) {
+      return display;
+    } else {
+      setDisplay(display + ".");
     }
   };
 
@@ -174,13 +190,7 @@ export const Hero = () => {
         >
           0
         </div>
-        <div
-          onClick={() => {
-            handleOperatorClick(".");
-          }}
-          name="dot"
-          className="dot"
-        >
+        <div onClick={handleDotclick} name="dot" className="dot">
           .
         </div>
         <div onClick={handleOnEqual} name="equal" className="equal">

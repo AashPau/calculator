@@ -10,3 +10,5 @@ Currently, two official plugins are available:
 # Project Description
 
 Trying to build react Calculator to test my skills
+
+update - fixed handle on dot and handle on operator, basic calculator is ready, plan to add more features and fix the css, make it look more attractive
