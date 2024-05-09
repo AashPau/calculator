@@ -1,0 +1,104 @@
+.container {
+  width: 500px;
+  display: grid;
+  grid-template-areas:
+    "display display display display"
+    "AC C per div"
+    "seven eight nine mul"
+    "four five six min"
+    "one two three plus"
+    "zero dot equal equal";
+
+  margin: auto;
+  align-items: center;
+}
+
+.container div {
+  border: 3px solid;
+  padding: 30px;
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .display {
+  justify-content: end;
+  grid-area: display;
+}
+.container .AC {
+  grid-area: AC;
+  background-color: #8ca0ff;
+}
+.container .C {
+  grid-area: C;
+  background-color: #8ca0ff;
+}
+.container .per {
+  grid-area: per;
+  background-color: #8ca0ff;
+}
+
+.container .division {
+  grid-area: div;
+  background-color: #8ca0ff;
+}
+.container .seven {
+  grid-area: seven;
+  background-color: #8ca0ff;
+}
+.container .eight {
+  grid-area: eight;
+  background-color: #8ca0ff;
+}
+.container .nine {
+  grid-area: nine;
+  background-color: #8ca0ff;
+}
+.container .mul {
+  grid-area: mul;
+  background-color: #8ca0ff;
+}
+.container .four {
+  grid-area: four;
+  background-color: #8ca0ff;
+}
+.container .five {
+  grid-area: five;
+  background-color: #8ca0ff;
+}
+.container .six {
+  grid-area: six;
+  background-color: #8ca0ff;
+}
+.container .minus {
+  grid-area: min;
+  background-color: #8ca0ff;
+}
+.container .one {
+  grid-area: one;
+  background-color: #8ca0ff;
+}
+.container .two {
+  grid-area: two;
+  background-color: #8ca0ff;
+}
+.container .three {
+  grid-area: three;
+  background-color: #8ca0ff;
+}
+.container .plus {
+  grid-area: plus;
+  background-color: #8ca0ff;
+}
+.container .zero {
+  grid-area: zero;
+  background-color: #8ca0ff;
+}
+.container .dot {
+  grid-area: dot;
+  background-color: #8ca0ff;
+}
+.container .equal {
+  grid-area: equal;
+  background-color: #8ca0ff;
+}
