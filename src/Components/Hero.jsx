@@ -75,7 +75,9 @@ export const Hero = () => {
   };
   return (
     <>
-      <div className="container">
+      <h1>Calculator</h1>
+      <hr />
+      <div className="container roboto-mono-css">
         <div name="" className="display">
           {display}
         </div>

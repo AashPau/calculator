@@ -1,3 +1,18 @@
+h1 {
+  text-align: center;
+}
+hr {
+  margin-bottom: 40px;
+  width: 60%;
+}
+.roboto-mono-css {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: xx-large;
+}
+
 .container {
   width: 500px;
   display: grid;
@@ -11,8 +26,16 @@
 
   margin: auto;
   align-items: center;
+  border: 5px solid black;
+  border-radius: 10px;
+  background: black;
 }
 
+@media screen and (max-width: 600px) {
+  .container > div {
+    flex-basis: 33.33%; /* Adjust width for smaller screens */
+  }
+}
 .container div {
   border: 3px solid;
   padding: 30px;
@@ -24,6 +47,7 @@
 .container .display {
   justify-content: end;
   grid-area: display;
+  background: rgb(206, 206, 156);
 }
 .container .AC {
   grid-area: AC;
