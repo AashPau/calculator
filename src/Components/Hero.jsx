@@ -2,24 +2,26 @@ import { useState } from "react";
 import "./Hero.css";
 
 const operator = ["+", "-", "/", "*", "%"];
+// const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 export const Hero = () => {
-  //   const [value, setValue] = useState("");
   const [display, setDisplay] = useState("");
-  // const [input, setInput] = useState("");
+
+  const [lastOperator, setLastOperator] = useState("");
 
   const handleNumberClick = (num) => {
     //add the number to the display
     setDisplay(display + num);
   };
-  console.log(display);
 
   const handleOperatorClick = (op) => {
+    //saving the last operator
+    setLastOperator(op);
     //find last character
     const lastChar = display.charAt(display.length - 1);
     if (operator.includes(lastChar)) {
       //check if last character is equal to the operator input received
       if (lastChar === op) {
-        return display;
+        return;
       } else {
         //remove the last operator from the string and paste new operator
         const cutDisplay = display.slice(0, -1);
@@ -30,12 +32,26 @@ export const Hero = () => {
     }
   };
 
-  const handleDotclick = () => {
-    //check if the last character is dot
-    if (display.charAt(display.length - 1) === ".") {
-      return display;
+  const handleDotClick = () => {
+    //find the last index of operator
+    const lastIndexOfOperator = display.lastIndexOf(lastOperator);
+    //get the string after the last operator
+    const stringAfterOperator = display.slice(lastIndexOfOperator);
+    if (
+      //leaving no case of ".3" but "0.3" to make it look better
+      operator.includes(display.charAt(display.length - 1)) ||
+      display === ""
+    ) {
+      return setDisplay(display + "0.");
+    }
+    if (stringAfterOperator.includes(".")) {
+      return;
+    }
+    // don't let the case of "22.22.22" happen by checking if there is no operator and "." already exists
+    if (lastOperator === "" && display.includes(".")) {
+      return;
     } else {
-      setDisplay(display + ".");
+      return setDisplay(display + ".");
     }
   };
 
@@ -51,9 +67,10 @@ export const Hero = () => {
     //check of the last character is operator and removes it before calculating
     if (operator.includes(display.charAt(display.length - 1))) {
       const cutDisplay = display.slice(0, -1);
-      setDisplay(eval(cutDisplay));
+      return setDisplay(eval(cutDisplay).toString());
     } else {
-      setDisplay(eval(display));
+      console.log(typeof display);
+      return setDisplay(eval(display).toString());
     }
   };
   return (
@@ -203,7 +220,7 @@ export const Hero = () => {
         >
           0
         </div>
-        <div onClick={handleDotclick} name="dot" className="dot">
+        <div onClick={handleDotClick} name="dot" className="dot">
           .
         </div>
         <div onClick={handleOnEqual} name="equal" className="equal">

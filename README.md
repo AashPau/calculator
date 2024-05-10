@@ -14,3 +14,5 @@ Trying to build react Calculator to test my skills
 update - fixed handle on dot and handle on operator, basic calculator is ready, plan to add more features and fix the css, make it look more attractive
 
 update 2 - fixed the operators click, added comment to the function, calculator still allows number like "2.2.2.2", need to fix it
+
+update 3 - finally fixed all issues of handle on dot, next is to seperate "%" from other operators as it is calculated differently, and the eval method seems risky needs to change alot of things
