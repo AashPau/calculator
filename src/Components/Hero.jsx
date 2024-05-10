@@ -1,33 +1,38 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Hero.css";
 
 const operator = ["+", "-", "/", "*", "%"];
 export const Hero = () => {
   //   const [value, setValue] = useState("");
   const [display, setDisplay] = useState("");
-  const [input, setInput] = useState("");
+  // const [input, setInput] = useState("");
 
   const handleNumberClick = (num) => {
+    //add the number to the display
     setDisplay(display + num);
   };
   console.log(display);
 
   const handleOperatorClick = (op) => {
-    if (
-      display.includes(op) &&
-      display.lastIndexOf(op) === display.length - 1
-    ) {
-      return display;
+    //find last character
+    const lastChar = display.charAt(display.length - 1);
+    if (operator.includes(lastChar)) {
+      //check if last character is equal to the operator input received
+      if (lastChar === op) {
+        return display;
+      } else {
+        //remove the last operator from the string and paste new operator
+        const cutDisplay = display.slice(0, -1);
+        setDisplay(cutDisplay + op);
+      }
     } else {
       setDisplay(display + op);
     }
   };
 
   const handleDotclick = () => {
-    if (
-      display.includes(".") &&
-      display.lastIndexOf(".") >= display.lastIndexOf(operator)
-    ) {
+    //check if the last character is dot
+    if (display.charAt(display.length - 1) === ".") {
       return display;
     } else {
       setDisplay(display + ".");
@@ -35,13 +40,21 @@ export const Hero = () => {
   };
 
   const handleOnAC = () => {
+    //clear the display
     setDisplay("");
   };
   const handleOnC = () => {
+    //remove the last character
     setDisplay(display.substring(0, display.length - 1));
   };
   const handleOnEqual = () => {
-    setDisplay(eval(display).toString());
+    //check of the last character is operator and removes it before calculating
+    if (operator.includes(display.charAt(display.length - 1))) {
+      const cutDisplay = display.slice(0, -1);
+      setDisplay(eval(cutDisplay));
+    } else {
+      setDisplay(eval(display));
+    }
   };
   return (
     <>

@@ -12,3 +12,5 @@ Currently, two official plugins are available:
 Trying to build react Calculator to test my skills
 
 update - fixed handle on dot and handle on operator, basic calculator is ready, plan to add more features and fix the css, make it look more attractive
+
+update 2 - fixed the operators click, added comment to the function, calculator still allows number like "2.2.2.2", need to fix it
