@@ -1,16 +1,20 @@
 import { useState } from "react";
 import "./Hero.css";
 
-const operator = ["+", "-", "/", "*", "%"];
+const operator = ["+", "-", "/", "*"];
 // const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 export const Hero = () => {
   const [display, setDisplay] = useState("");
-
   const [lastOperator, setLastOperator] = useState("");
+
+  //find the last index of operator
+  const lastIndexOfOperator = display.lastIndexOf(lastOperator);
+  //get the string after the last operator
+  const stringAfterOperator = display.slice(lastIndexOfOperator + 1);
 
   const handleNumberClick = (num) => {
     //add the number to the display
-    setDisplay(display + num);
+    return setDisplay(display + num);
   };
 
   const handleOperatorClick = (op) => {
@@ -32,11 +36,35 @@ export const Hero = () => {
     }
   };
 
+  const handlePercentClick = () => {
+    //check if the last character is operator
+    if (
+      operator.includes(display.charAt(display.length - 1)) ||
+      display === ""
+    ) {
+      console.log("top");
+      return;
+    }
+
+    if (lastOperator && stringAfterOperator) {
+      //find string before the operator
+      const stringBeforeOperator = display.slice(0, lastIndexOfOperator);
+      //find the percentage value of the string after the operator
+      const percantageValue = eval(stringAfterOperator * 0.01).toFixed(2);
+      console.log("mid");
+      //put back the new parts of string and send them
+      return setDisplay(
+        (stringBeforeOperator + lastOperator + percantageValue).toString()
+      );
+    } else {
+      //calculate the percentage of the display
+      const displaycalculation = eval(display * 0.01).toFixed(2);
+      console.log("bottm");
+      return setDisplay(displaycalculation.toString());
+    }
+  };
+
   const handleDotClick = () => {
-    //find the last index of operator
-    const lastIndexOfOperator = display.lastIndexOf(lastOperator);
-    //get the string after the last operator
-    const stringAfterOperator = display.slice(lastIndexOfOperator);
     if (
       //leaving no case of ".3" but "0.3" to make it look better
       operator.includes(display.charAt(display.length - 1)) ||
@@ -58,12 +86,16 @@ export const Hero = () => {
   const handleOnAC = () => {
     //clear the display
     setDisplay("");
+    //clear last operator
+    setLastOperator("");
   };
   const handleOnC = () => {
     //remove the last character
     setDisplay(display.substring(0, display.length - 1));
   };
   const handleOnEqual = () => {
+    //clear last operator
+    setLastOperator("");
     //check of the last character is operator and removes it before calculating
     if (operator.includes(display.charAt(display.length - 1))) {
       const cutDisplay = display.slice(0, -1);
@@ -87,13 +119,7 @@ export const Hero = () => {
         <div onClick={handleOnC} name="C" className="C">
           C
         </div>
-        <div
-          onClick={() => {
-            handleOperatorClick("%");
-          }}
-          name="per"
-          className="per"
-        >
+        <div onClick={handlePercentClick} name="per" className="per">
           %
         </div>
         <div

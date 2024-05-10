@@ -18,3 +18,5 @@ update 2 - fixed the operators click, added comment to the function, calculator 
 update 3 - finally fixed all issues of handle on dot, next is to seperate "%" from other operators as it is calculated differently, and the eval method seems risky needs to change alot of things
 
 update 4 - added some css and google font
+
+update 5 - fix the height of display, remove css from App.css, fix the percentage button issue
