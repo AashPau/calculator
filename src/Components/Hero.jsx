@@ -96,13 +96,26 @@ export const Hero = () => {
   const handleOnEqual = () => {
     //clear last operator
     setLastOperator("");
-    //check of the last character is operator and removes it before calculating
-    if (operator.includes(display.charAt(display.length - 1))) {
+
+    //check if the last character is operator and removes it before calculating
+    const lastChar = display.charAt(display.length - 1);
+    if (operator.includes(lastChar)) {
       const cutDisplay = display.slice(0, -1);
-      return setDisplay(eval(cutDisplay).toString());
+      const result = eval(cutDisplay);
+      setDisplay(
+        //checks if the result is Nan or not finite
+        isNaN(result) || !isFinite(result) ? "Math Error" : result.toString()
+      );
     } else {
-      console.log(typeof display);
-      return setDisplay(eval(display).toString());
+      //try to get result and catch error if not possible
+      try {
+        const result = eval(display);
+        setDisplay(
+          isNaN(result) || !isFinite(result) ? "Math Error" : result.toString()
+        );
+      } catch (error) {
+        setDisplay("Math Error");
+      }
     }
   };
   return (
