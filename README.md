@@ -20,3 +20,5 @@ update 3 - finally fixed all issues of handle on dot, next is to seperate "%" fr
 update 4 - added some css and google font
 
 update 5 - fix the height of display, remove css from App.css, fix the percentage button issue
+
+update 6 - fix the (00/0) error and added error handler using try catch
