@@ -22,3 +22,5 @@ update 4 - added some css and google font
 update 5 - fix the height of display, remove css from App.css, fix the percentage button issue
 
 update 6 - fix the (00/0) error and added error handler using try catch
+
+update 7 - show some effect on buttons click through css and fix the issue on clicking "=" while display === "".

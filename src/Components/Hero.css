@@ -45,13 +45,29 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  transition: 0.2s all;
 }
+
+/* show effects on click */
+.container div:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
 .container .display {
   justify-content: end;
   grid-area: display;
   background: rgb(206, 206, 156);
   height: 43px;
 }
+
+/* donot set the effects to display */
+.container .display:active {
+  transform: none;
+}
+
 .container .AC {
   grid-area: AC;
   background-color: #8ca0ff;

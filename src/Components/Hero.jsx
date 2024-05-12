@@ -106,6 +106,9 @@ export const Hero = () => {
         //checks if the result is Nan or not finite
         isNaN(result) || !isFinite(result) ? "Math Error" : result.toString()
       );
+    }
+    if (display === "") {
+      return;
     } else {
       //try to get result and catch error if not possible
       try {
